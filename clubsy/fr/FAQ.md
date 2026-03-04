@@ -30,7 +30,7 @@ Oui, si le club l’autorise et attribue plusieurs appartenances.
 
 ## 9) Comment signaler un problème ?
 Utilisez **Signaler un incident** dans l’application ou contactez le support :
-- E-mail : [A_COMPLETER_EMAIL_SUPPORT]
+- E-mail : support-clubsy@powc2.app
 
 ## 10) Quels appareils sont compatibles ?
 ClubSy est disponible sur mobile et peut inclure d’autres plateformes selon la version publiée.
@@ -47,3 +47,4 @@ Consultez la [Politique de confidentialité](./POLITIQUE_DE_CONFIDENTIALITE.md).
 
 ## Avis
 Ce contenu est informatif et peut être mis à jour selon l’évolution du produit et des obligations légales.
+
