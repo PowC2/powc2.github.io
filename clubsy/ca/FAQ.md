@@ -30,7 +30,7 @@ Sí, si el club ho permet i t’assigna múltiples pertinençes.
 
 ## 9) Com reporto una incidència?
 Fes servir **Reportar incidència** dins l’app o contacta amb suport:
-- Correu: [COMPLETAR_EMAIL_SUPORT]
+- Correu: support-clubsy@powc2.app
 
 ## 10) Quins dispositius són compatibles?
 ClubSy està disponible en plataformes mòbils i pot incloure suport addicional segons la versió publicada.
@@ -47,3 +47,4 @@ Consulta la [Política de privacitat](./POLITICA_DE_PRIVACITAT.md).
 
 ## Avís
 Aquest contingut és informatiu i es pot actualitzar per canvis de producte o requisits legals.
+
