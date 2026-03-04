@@ -30,7 +30,7 @@ Yes, if the club allows it and assigns multiple memberships to your account.
 
 ## 9) How do I report an issue or contact support?
 Use **Report issue** inside the app or contact official support:
-- Email: [FILL_SUPPORT_EMAIL]
+- Email: support-clubsy@powc2.app
 
 ## 10) What devices are supported?
 ClubSy is available on mobile platforms and may include additional platform support depending on the published version.
@@ -47,3 +47,4 @@ See the [Privacy Policy](./PRIVACY_POLICY.md).
 
 ## Notice
 This content is informational and may be updated to reflect product improvements, operational changes, or applicable legal requirements.
+
