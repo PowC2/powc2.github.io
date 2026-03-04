@@ -30,7 +30,7 @@ Sì, se il club lo consente e assegna più appartenenze.
 
 ## 9) Come segnalo un problema?
 Usa **Segnala problema** nell’app o contatta il supporto:
-- E-mail: [COMPILARE_EMAIL_SUPPORTO]
+- E-mail: support-clubsy@powc2.app
 
 ## 10) Quali dispositivi sono supportati?
 ClubSy è disponibile su mobile e può includere altre piattaforme in base alla versione pubblicata.
@@ -47,3 +47,4 @@ Consulta la [Informativa sulla privacy](./INFORMATIVA_SULLA_PRIVACY.md).
 
 ## Avviso
 Questo contenuto è informativo e può essere aggiornato per cambi di prodotto o obblighi normativi.
+
