@@ -30,7 +30,7 @@ Sim, se o clube permitir e lhe atribuir múltiplas adesões.
 
 ## 9) Como reporto um erro ou peço suporte?
 Use a opção **Reportar incidente** dentro da app ou contacte o suporte oficial:
-- E-mail: [COMPLETAR_EMAIL_SOPORTE]
+- E-mail: support-clubsy@powc2.app
 
 ## 10) Que dispositivos são compatíveis?
 O ClubSy está disponível para plataformas móveis e pode ter suporte adicional conforme a versão publicada.
@@ -47,3 +47,4 @@ Consulte a [Política de privacidade](./POLITICA_PRIVACIDAD.md).
 
 ## Aviso
 Este conteúdo é informativo e pode ser atualizado para refletir melhorias de produto, alterações operacionais ou requisitos legais aplicáveis.
+
