@@ -1,0 +1,5 @@
+entity,name,category,league
+team,Team without league,U18,
+foo,Unknown row type,,
+team,,U18,Premier
+team,Team with missing reference,U14,Premier

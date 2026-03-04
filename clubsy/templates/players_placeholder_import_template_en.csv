@@ -1,0 +1,4 @@
+full_name,email,phone,role,notes,jersey_number,position,dominance,jersey_name,medical_info,federation_license
+John Smith,john.smith@example.com,,player,Bulk import,10,Forward,right,JOHN,,
+Emma Johnson,,+447700900123,player,No email yet,7,Winger,left,EMMA,Asthma,
+Michael Brown,michael.brown@example.com,,coach,Technical staff,,,,,
