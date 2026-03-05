@@ -1,8 +1,0 @@
-entity,name,category,league
-category,Senior,,
-category,Juvenil,,
-league,Oro,,
-league,Plata,,
-team,Equipo Senior A,Senior,Oro
-team,Equipo Senior B,Senior,Plata
-team,Equipo Juvenil A,Juvenil,Plata

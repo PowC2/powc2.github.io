@@ -1,8 +1,0 @@
-entity,name,category,league
-category,U18,,
-category,U16,,
-league,Premier,,
-league,Regional,,
-team,U18 A,U18,Premier
-team,U18 B,U18,Regional
-team,U16 A,U16,Regional
