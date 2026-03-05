@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PowC²</title>
+    <meta
+      name="description"
+      content="PowC2.app - Mobile Apps."
+    />
+    <link rel="icon" type="image/png" href="images/c2.png" />
+    <link rel="apple-touch-icon" href="images/c2.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-1: #fcf8ef;
+        --bg-2: #efe6d7;
+        --ink: #1f1b16;
+        --ink-soft: #64584a;
+        --card: rgba(255, 255, 255, 0.75);
+        --line: rgba(31, 27, 22, 0.12);
+        --accent: #1d8f7a;
+        --accent-2: #f06b4f;
+        --shadow: 0 25px 60px rgba(31, 27, 22, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 8% 12%, rgba(29, 143, 122, 0.22), transparent 25%),
+          radial-gradient(circle at 92% 88%, rgba(240, 107, 79, 0.2), transparent 30%),
+          linear-gradient(130deg, var(--bg-1), var(--bg-2));
+        padding: 1.4rem;
+      }
+
+      .noise {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.08;
+        background-image: radial-gradient(#000 0.4px, transparent 0.4px);
+        background-size: 3px 3px;
+      }
+
+      .hero {
+        width: min(980px, 100%);
+        margin: 0 auto;
+        border: 1px solid var(--line);
+        background: var(--card);
+        backdrop-filter: blur(6px);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transform: translateY(18px);
+        opacity: 0;
+        animation: rise 720ms ease-out forwards;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
+      }
+
+      .content,
+      .panel {
+        padding: clamp(1.5rem, 3.5vw, 3rem);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.42rem 0.75rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 0.92rem;
+        background: rgba(255, 255, 255, 0.6);
+      }
+
+      .top-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.9rem;
+        flex-wrap: wrap;
+      }
+
+      .lang-picker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.65);
+        padding: 0.36rem 0.5rem;
+      }
+
+      .lang-picker label {
+        font-size: 0.84rem;
+        color: var(--ink-soft);
+      }
+
+      .lang-picker select {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.88rem;
+        padding: 0.28rem 0.4rem;
+      }
+
+      .brand img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+
+      .powc2-logo-extra {
+        margin-top: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.4rem 0.55rem;
+        background: rgba(255, 255, 255, 0.68);
+      }
+
+      .powc2-logo-extra img {
+        width: clamp(96px, 18vw, 138px);
+        height: auto;
+        display: block;
+      }
+
+      h1 {
+        margin: 1rem 0 0.75rem;
+        font-family: "Syne", sans-serif;
+        font-size: clamp(2.3rem, 6vw, 4.4rem);
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+      }
+
+      p {
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: clamp(1rem, 2.2vw, 1.2rem);
+        max-width: 28ch;
+      }
+
+      .btn {
+        text-decoration: none;
+        border-radius: 12px;
+        padding: 0.78rem 1.05rem;
+        font-weight: 700;
+        transition: transform 150ms ease, box-shadow 150ms ease;
+      }
+
+      .btn.primary {
+        background: var(--ink);
+        color: #ffffff;
+      }
+
+      .btn.secondary {
+        border: 1px solid var(--line);
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.09);
+      }
+
+      .panel {
+        border-left: 1px solid var(--line);
+        background: linear-gradient(175deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.35));
+      }
+
+      .chip {
+        display: inline-block;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #0f6e5d;
+        background: rgba(29, 143, 122, 0.14);
+        border: 1px solid rgba(29, 143, 122, 0.25);
+        padding: 0.4rem 0.55rem;
+        border-radius: 8px;
+      }
+
+      .panel h2 {
+        margin: 0.85rem 0 0.6rem;
+        font-family: "Syne", sans-serif;
+        font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      }
+
+      .app-card {
+        margin-top: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.8rem;
+        background: rgba(255, 255, 255, 0.72);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .app-card-link {
+        text-decoration: none;
+        color: inherit;
+        transition: transform 150ms ease, box-shadow 150ms ease;
+      }
+
+      .app-card-link:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.09);
+      }
+
+      .app-card img {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+
+      .app-card-link:focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 2px;
+      }
+
+      .app-card strong {
+        display: block;
+        font-size: 0.98rem;
+      }
+
+      .app-card span {
+        color: var(--ink-soft);
+        font-size: 0.92rem;
+      }
+
+      .future {
+        margin-top: 1rem;
+      }
+
+      .future h3 {
+        margin: 0 0 0.55rem;
+        font-family: "Syne", sans-serif;
+        font-size: 1rem;
+      }
+
+      .list {
+        list-style: none;
+        margin: 1rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      .list li {
+        border: 1px solid var(--line);
+        border-radius: 11px;
+        padding: 0.65rem 0.75rem;
+        background: rgba(255, 255, 255, 0.7);
+        animation: stagger 500ms ease both;
+      }
+
+      .list li.link-card {
+        padding: 0;
+        overflow: visible;
+        transition: transform 150ms ease, box-shadow 150ms ease;
+      }
+
+      .list li.link-card:hover,
+      .list li.link-card:focus-within {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.09);
+      }
+
+      .list-link {
+        display: block;
+        width: 100%;
+        padding: 0.65rem 0.75rem;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .list-link:hover {
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .list-link:focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      .list li:nth-child(1) {
+        animation-delay: 180ms;
+      }
+
+      .list li:nth-child(2) {
+        animation-delay: 260ms;
+      }
+
+      .list li:nth-child(3) {
+        animation-delay: 340ms;
+      }
+
+      .contact-footer {
+        width: min(980px, 100%);
+        margin: 1rem auto 0;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: var(--shadow);
+      }
+
+      .contact-wrapper {
+        padding: clamp(1rem, 3vw, 1.35rem);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-label {
+        margin: 0;
+        color: var(--ink-soft);
+        font-weight: 500;
+      }
+
+      @keyframes rise {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes stagger {
+        from {
+          transform: translateX(16px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          border-left: none;
+          border-top: 1px solid var(--line);
+        }
+
+        p {
+          max-width: none;
+        }
+
+        .contact-wrapper {
+          justify-content: center;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+
+    <main class="hero" role="main">
+      <section class="grid">
+        <div class="content">
+          <div class="top-row">
+            <div class="brand">
+              <img src="images/c2.png" alt="Logo de PowC2" />
+              <span>powc².app</span>
+            </div>
+
+            <div class="lang-picker">
+              <select id="language-select" aria-label="Selector de idioma ISO">
+                <option value="ca">ca</option>
+                <option value="de">de</option>
+                <option value="en" selected>en</option>
+                <option value="es">es</option>
+                <option value="fr">fr</option>
+                <option value="it">it</option>
+                <option value="pt">pt</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <aside class="panel" aria-label="Novedades PowC2">
+          <span class="chip" data-i18n="activeChip">App Activa</span>
+
+          <a
+            class="app-card app-card-link"
+            href="https://clubsy.powc2.app"
+            aria-label="Abrir ClubSy"
+          >
+              <img src="images/logo_clubsy.png" alt="Logo de ClubSy" />
+            <div>
+              <strong>ClubSy</strong>
+              <span data-i18n="clubsyTagline">Synchronized, efficient, always growing.</span>
+            </div>
+          </a>
+
+          <ul class="list">
+            <li class="link-card">
+              <a
+                class="list-link"
+                href="https://clubsy.powc2.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Descargar la app ClubSy"
+                data-i18n="listItemOne"
+              >
+                Descarga la App
+              </a>
+            </li>
+          </ul>
+
+          <section class="future" aria-label="Proximos proyectos">
+            <h3 data-i18n="futureTitle">Proximos proyectos</h3>
+            <div class="app-card" aria-label="Tarjeta de SpotMatch">
+              <img src="images/logo_spotmatch.png" alt="Logo de SpotMatch" />
+              <div>
+                <strong>SpotMatch</strong>
+                <span data-i18n="spotmatchText">Proximo lanzamiento dentro del ecosistema PowC²</span>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="contact-footer" aria-label="Contacto PowC2">
+      <div class="contact-wrapper">
+        <p class="contact-label" data-i18n="contactFooterLabel">Quieres colaborar?</p>
+        <a class="btn primary" href="mailto:contact@powc2.app" aria-label="Contactar PowC2" data-i18n="contactBtn">
+          Contacto
+        </a>
+      </div>
+    </footer>
+
+    <script>
+      const translations = {
+        ca: {
+          languageLabel: "Idioma",
+          title: "PowC²",
+          heroText: "Desenvolupament d'aplicacions mobil amb enfocament en utilitat real.",
+          contactBtn: "Contacte",
+          contactFooterLabel: "Vols col.laborar?",
+          activeChip: "App Activa",
+          clubsyTitle: "ClubSy App",
+          clubsyTagline: "Sincronitzada, eficient, sempre en creixement.",
+          listItemOne: "Descarrega l'app",
+          futureTitle: "Propers projectes",
+          spotmatchText: "Proper llancament dins de l'ecosistema PowC²"
+        },
+        es: {
+          languageLabel: "Idioma",
+          title: "PowC²",
+          heroText: "Desarrollo de aplicaciones moviles con enfoque en utilidad real.",
+          contactBtn: "Contacto",
+          contactFooterLabel: "Quieres colaborar?",
+          activeChip: "App Activa",
+          clubsyTitle: "ClubSy App",
+          clubsyTagline: "Sincronizada, eficiente, siempre en crecimiento.",
+          listItemOne: "Descarga la app",
+          futureTitle: "Proximos proyectos",
+          spotmatchText: "Proximo lanzamiento dentro del ecosistema PowC²"
+        },
+        en: {
+          languageLabel: "Language",
+          title: "PowC²",
+          heroText: "Mobile app development focused on real-world utility.",
+          contactBtn: "Contact",
+          contactFooterLabel: "Want to collaborate?",
+          activeChip: "Active App",
+          clubsyTitle: "ClubSy App",
+          clubsyTagline: "Synchronized, efficient, always growing.",
+          listItemOne: "Download the app",
+          futureTitle: "Upcoming projects",
+          spotmatchText: "Next launch inside the PowC² ecosystem"
+        },
+        de: {
+          languageLabel: "Sprache",
+          title: "PowC²",
+          heroText: "Entwicklung mobiler Apps mit Fokus auf echten Nutzen.",
+          contactBtn: "Kontakt",
+          contactFooterLabel: "Moechtest du zusammenarbeiten?",
+          activeChip: "Aktive App",
+          clubsyTitle: "ClubSy App",
+          clubsyTagline: "Synchron, effizient, stetig wachsend.",
+          listItemOne: "App herunterladen",
+          futureTitle: "Kommende Projekte",
+          spotmatchText: "Nachster Launch im PowC²-Okosystem"
+        },
+        fr: {
+          languageLabel: "Langue",
+          title: "PowC²",
+          heroText: "Developpement d'applications mobiles axe sur une utilite reelle.",
+          contactBtn: "Contact",
+          contactFooterLabel: "Tu veux collaborer?",
+          activeChip: "Application active",
+          clubsyTitle: "ClubSy App",
+          clubsyTagline: "Synchronisee, efficace, toujours en evolution.",
+          listItemOne: "Telecharger l'app",
+          futureTitle: "Projets a venir",
+          spotmatchText: "Prochain lancement dans l'ecosysteme PowC²"
+        },
+        it: {
+          languageLabel: "Lingua",
+          title: "PowC²",
+          heroText: "Sviluppo di app mobili con focus sull'utilita reale.",
+          contactBtn: "Contatto",
+          contactFooterLabel: "Vuoi collaborare?",
+          activeChip: "App Attiva",
+          clubsyTitle: "ClubSy App",
+          clubsyTagline: "Sincronizzata, efficiente, sempre in crescita.",
+          listItemOne: "Scarica l'app",
+          futureTitle: "Prossimi progetti",
+          spotmatchText: "Prossimo lancio dentro l'ecosistema PowC²"
+        },
+        pt: {
+          languageLabel: "Idioma",
+          title: "PowC²",
+          heroText: "Desenvolvimento de aplicativos moveis com foco em utilidade real.",
+          contactBtn: "Contato",
+          contactFooterLabel: "Quer colaborar?",
+          activeChip: "App Ativo",
+          clubsyTitle: "ClubSy App",
+          clubsyTagline: "Sincronizado, eficiente, sempre em crescimento.",
+          listItemOne: "Baixar o app",
+          futureTitle: "Proximos projetos",
+          spotmatchText: "Proximo lancamento dentro do ecossistema PowC²"
+        }
+      };
+
+      const languageSelect = document.getElementById("language-select");
+
+      function applyLanguage(langCode) {
+        const selected = translations[langCode] || translations.es;
+        document.documentElement.lang = langCode;
+
+        document.querySelectorAll("[data-i18n]").forEach((node) => {
+          const key = node.getAttribute("data-i18n");
+          if (selected[key]) {
+            node.textContent = selected[key];
+          }
+        });
+      }
+
+      languageSelect.addEventListener("change", (event) => {
+        applyLanguage(event.target.value);
+      });
+
+      applyLanguage(languageSelect.value);
+    </script>
+  </body>
+</html>
