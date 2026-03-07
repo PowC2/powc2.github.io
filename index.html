@@ -320,6 +320,24 @@
         animation-delay: 340ms;
       }
 
+      .store-links {
+        margin-top: 1rem;
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      .store-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .store-link img {
+        display: block;
+        width: auto;
+        height: 44px;
+      }
+
       .contact-footer {
         width: min(980px, 100%);
         margin: 1rem auto 0;
@@ -391,7 +409,7 @@
         <div class="content">
           <div class="top-row">
             <div class="brand">
-              <img src="images/c2.png" alt="Logo de PowC2" />
+              <img src="images/c2.png" alt="Logo C2" />
               <span>powc².app</span>
             </div>
 
@@ -406,6 +424,10 @@
                 <option value="pt">pt</option>
               </select>
             </div>
+          </div>
+
+          <div class="powc2-logo-extra">
+            <img src="images/logo.png" alt="Logo de PowC2" />
           </div>
 
         </div>
@@ -425,18 +447,31 @@
             </div>
           </a>
 
-          <ul class="list">
-            <li>
-              <a
-                class="list-link app-card app-card-link"
-                href="https://clubsy.powc2.app"
-                aria-label="Descargar la app ClubSy"
-                data-i18n="listItemOne"
-              >
-                Descarga la App
-              </a>
-            </li>
-          </ul>
+          <div class="store-links" aria-label="Enlaces de descarga">
+            <a
+              id="google-play-link"
+              class="store-link"
+              href="#"
+              aria-label="Abrir Google Play temporal"
+            >
+              <img
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                alt="Get it on Google Play"
+              />
+            </a>
+
+            <a
+              id="app-store-link"
+              class="store-link"
+              href="#"
+              aria-label="Abrir App Store temporal"
+            >
+              <img
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                alt="Download on the App Store"
+              />
+            </a>
+          </div>
 
           <section class="future" aria-label="Proximos proyectos">
             <h3 data-i18n="futureTitle">Proximos proyectos</h3>
@@ -557,6 +592,22 @@
       };
 
       const languageSelect = document.getElementById("language-select");
+      const googlePlayLink = document.getElementById("google-play-link");
+      const appStoreLink = document.getElementById("app-store-link");
+
+      const currentClubsyUrl = "https://clubsy.powc2.app";
+
+      // Update these two URLs when each store listing is available.
+      const googlePlayUrl = currentClubsyUrl;
+      const appStoreUrl = currentClubsyUrl;
+
+      if (googlePlayLink) {
+        googlePlayLink.href = googlePlayUrl;
+      }
+
+      if (appStoreLink) {
+        appStoreLink.href = appStoreUrl;
+      }
 
       function applyLanguage(langCode) {
         const selected = translations[langCode] || translations.es;
